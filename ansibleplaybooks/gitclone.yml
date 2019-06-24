@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  user: ubuntu
+  sudo: yes
+  tasks:
+     - name: installing git
+       apt: name=git state=present
+     - name: cloning hit repository
+       git: repo=https://github.com/venkatbhimisetty/ltts-pratice.git dest=/home/ubuntu/gitclone

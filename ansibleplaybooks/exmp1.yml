@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: update apt-repostory
+      apt:
+      update_cache: yes
+    - name: Install add-apt-repostory
+      apt: name:softeare-properties-common state=latest
+    - name: install packages
+      apt: name={{item}} state=latest
+      with_items:
+          - tree
+          - telnet
+          - vim
+          - ufw

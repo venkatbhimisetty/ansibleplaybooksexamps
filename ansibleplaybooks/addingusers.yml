@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  user: ubuntu
+  sudo: yes
+  tasks:
+      - name: creating group
+        group: name=devops state=present
+      - name: creating users
+        user: name={{ item }} state=present group=devops
+        with_items:
+             - user1
+             - user2
+             - user3
